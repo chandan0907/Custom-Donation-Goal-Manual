@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Donation Goal (Transparent)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1 id="goalTitle" class="title">Donation Goal</h1>
+
+    <div class="card">
+      <!-- circular icon (solid circle, image centered inside) -->
+      <div class="icon-wrap" id="iconWrap">
+        <img id="goalIcon" src="Currency_Icon.png" alt="icon" />
+      </div>
+
+      <!-- right side: long pill bar that tucks under the left half of the circle -->
+      <div class="right">
+        <div class="bar" role="progressbar" aria-label="donation progress">
+          <!-- barInner covers whole bar; scaled horizontally by JS -->
+          <div id="barInner" class="bar-inner"></div>
+
+          <!-- amounts centered on top of bar -->
+          <div class="bar-text">
+            <span id="currentLabel">₹60,000</span>
+            <span class="bar-sep"> / </span>
+            <span id="targetLabel">₹1,00,000</span>
+            <span id="percentLabel" class="percent">(60%)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- editor (hide with ?embed=1) -->
+  <div id="editor" class="editor">
+    <h3>Goal Editor</h3>
+    <label>Header / Title
+      <input id="inputTitle" type="text" value="Donation Goal" />
+    </label>
+    <div class="row">
+      <label style="flex:1">Target (INR)
+        <input id="inputTarget" type="number" min="0" value="100000" />
+      </label>
+      <label style="flex:1">Current (INR)
+        <input id="inputCurrent" type="number" min="0" value="60000" />
+      </label>
+    </div>
+    <label>Currency Symbol
+      <input id="inputCurrency" type="text" value="₹" maxlength="3" />
+    </label>
+    <label>Accent Color
+      <input id="inputColor" type="color" value="#c81010" />
+    </label>
+    <label>Upload Icon
+      <input id="inputIcon" type="file" accept="image/*" />
+    </label>
+
+    <div class="row">
+      <button id="btnSave">Save</button>
+      <button id="btnReset" style="background:#777;margin-left:6px">Reset</button>
+    </div>
+
+    <div class="row">
+      <button id="btnExport" style="background:#444">Export JSON</button>
+      <button id="btnImport" style="background:#444;margin-left:6px">Import JSON</button>
+    </div>
+
+    <small>Tip: append <code>?embed=1</code> to the file URL to hide editor for OBS.</small>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
