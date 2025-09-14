@@ -3,26 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Donation Goal (Transparent)</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Donation Goal (OBS Overlay)</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="wrapper">
     <h1 id="goalTitle" class="title">Donation Goal</h1>
 
     <div class="card">
-      <!-- circular icon (solid circle, image centered inside) -->
+      <!-- circular/square icon -->
       <div class="icon-wrap" id="iconWrap">
         <img id="goalIcon" src="Currency_Icon.png" alt="icon" />
       </div>
 
-      <!-- right side: long pill bar that tucks under the left half of the circle -->
+      <!-- right side progress bar -->
       <div class="right">
         <div class="bar" role="progressbar" aria-label="donation progress">
-          <!-- barInner covers whole bar; scaled horizontally by JS -->
           <div id="barInner" class="bar-inner"></div>
 
-          <!-- amounts centered on top of bar -->
           <div class="bar-text">
             <span id="currentLabel">₹60,000</span>
             <span class="bar-sep"> / </span>
@@ -34,7 +32,7 @@
     </div>
   </div>
 
-  <!-- editor (hide with ?embed=1) -->
+  <!-- editor (hidden in OBS with ?embed=1) -->
   <div id="editor" class="editor">
     <h3>Goal Editor</h3>
     <label>Header / Title
@@ -62,14 +60,26 @@
       <button id="btnSave">Save</button>
       <button id="btnReset" style="background:#777;margin-left:6px">Reset</button>
     </div>
-
-    <div class="row">
-      <button id="btnExport" style="background:#444">Export JSON</button>
-      <button id="btnImport" style="background:#444;margin-left:6px">Import JSON</button>
-    </div>
-
-    <small>Tip: append <code>?embed=1</code> to the file URL to hide editor for OBS.</small>
   </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"></script>
+
+  <!-- Config (replace with your Firebase values!) -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "yourapp.firebaseapp.com",
+      databaseURL: "https://yourapp.firebaseio.com",
+      projectId: "yourapp",
+      storageBucket: "yourapp.appspot.com",
+      messagingSenderId: "1234567890",
+      appId: "1:1234567890:web:abcdefgh"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
 
   <script src="script.js"></script>
 </body>
